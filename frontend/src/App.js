@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import './index.css';
 
-const socket = io('http://localhost:4000');
+const socket = io('https://fullstack-task-sravani-backend.vercel.app');
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -12,7 +12,7 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/fetchAllTasks')
+    axios.get('https://fullstack-task-sravani-backend.vercel.app/fetchAllTasks')
       .then(response => {
         setTasks(response.data);
         setLoading(false);
