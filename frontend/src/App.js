@@ -4,8 +4,8 @@ import axios from 'axios';
 import './index.css';
 
 // const socket = io('http://localhost:4000');
-// const socket = io('https://fullstack-task-sravani-backend-app.onrender.com');
-const socket = io('https://fullstack-sravani-backend.onrender.com');
+const socket = io('https://fullstack-task-sravani-backend-app.onrender.com');
+// const socket = io('https://fullstack-sravani-backend.onrender.com');
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -14,9 +14,9 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('https://fullstack-sravani-backend.onrender.com/fetchAllTasks')
+    // axios.get('https://fullstack-sravani-backend.onrender.com/fetchAllTasks')
     // axios.get('http://localhost:4000/fetchAllTasks')
-    // axios.get('https://fullstack-task-sravani-backend-app.onrender.com/fetchAllTasks')
+    axios.get('https://fullstack-task-sravani-backend-app.onrender.com/fetchAllTasks')
       .then(response => {
         setTasks(response.data);
         setLoading(false);
