@@ -63,7 +63,9 @@ const App: React.FC = () => {
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-lg w-80">
         <h1 className="text-2xl font-bold mb-4 flex items-center">
-          <span className="mr-2">📓</span> Note App
+          <span className="mr-2">
+            <img className="w-8 h-8" src='/note pad.png'/>
+            </span> Note App
         </h1>
         <div className="flex mb-4">
           <input
@@ -71,7 +73,7 @@ const App: React.FC = () => {
             value={task}
             onChange={(e) => setTask(e.target.value)}
             placeholder="New Note..."
-            className="border rounded-l p-2 flex-grow"
+            className="border rounded-l p-2 flex-grow mr-2"
           />
           <button 
             onClick={handleAddTask}
@@ -86,10 +88,10 @@ const App: React.FC = () => {
           <p className="text-red-500">{error}</p>
         ) : (
           <>
-            <h2 className="font-bold mb-2">Notes</h2>
-            <ul className="list-disc pl-5 overflow-y-auto h-40">
+            <h2 className="font-bold mb-2 underline-container">Notes</h2>
+            <ul className="list-disc pl-1 overflow-y-auto h-40">
               {tasks.map(task => (
-                <li key={task.id} className="flex justify-between items-center mb-2">
+                <li key={task.id} className="flex justify-between items-center mb-2 underline-container">
                   <div>
                     <strong className="text-lg">{task.name}</strong>
                     <span className="block text-gray-500 text-sm">
@@ -98,7 +100,7 @@ const App: React.FC = () => {
                   </div>
                   <button
                     onClick={() => handleDeleteTask(task.id)}
-                    className="bg-red-500 text-white p-1 rounded ml-4"
+                    className="bg-red-500 text-white p-2 rounded ml-4"
                   >
                     Delete
                   </button>
