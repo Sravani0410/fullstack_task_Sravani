@@ -1,5 +1,6 @@
 const express = require('express');
-const https = require('https');
+// const https = require('https');
+const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
 const fs = require('fs');
@@ -7,7 +8,7 @@ const Task = require('./models/Task');
 const { redisClient, mongoose } = require('./config');
 
 const app = express();
-const server = https.createServer(app);
+const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: 'http://localhost:3000',
