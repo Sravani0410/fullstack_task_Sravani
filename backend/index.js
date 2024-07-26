@@ -7,7 +7,7 @@ const Task = require('./models/Task');
 const { redisClient, mongoose } = require('./config');
 
 const app = express();
-const server = http.createServer(app);
+const server = https.createServer(app);
 const io = socketIo(server, {
   cors: {
     origin: 'http://localhost:3000',
