@@ -1,6 +1,6 @@
 const express = require('express');
-const https = require('https');
-// const http = require('http');
+// const https = require('https');
+const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
 const fs = require('fs');
@@ -8,11 +8,16 @@ const Task = require('./models/Task');
 const { redisClient, mongoose } = require('./config');
 
 const app = express();
-const server = https.createServer(app);
+const server = http.createServer(app);
+const allowedOrigins = [
+  'http://localhost:3000', 
+  'https://fullstack-task-sravani.vercel.app'
+];
 const io = socketIo(server, {
   cors: {
+    origin: allowedOrigins,
     // origin: 'http://localhost:3000',
-    origin: 'https://fullstack-task-sravani.vercel.app',
+    // origin: 'https://fullstack-task-sravani.vercel.app',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true
@@ -20,8 +25,9 @@ const io = socketIo(server, {
 });
 
 app.use(cors({
+  origin: allowedOrigins,
   // origin: 'http://localhost:3000',
-  origin: 'https://fullstack-task-sravani.vercel.app',
+  // origin: 'https://fullstack-task-sravani.vercel.app',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
   credentials: true
