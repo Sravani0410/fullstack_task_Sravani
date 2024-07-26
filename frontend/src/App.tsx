@@ -1,38 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
-import axios from 'axios';
+import io, { Socket } from 'socket.io-client';
+import axios, { AxiosResponse } from 'axios';
 import './index.css';
 
-// const socket = io('http://localhost:4000');
-const socket = io('https://fullstack-task-sravani-backend-app.onrender.com');
-// const socket = io('https://fullstack-sravani-backend.onrender.com');
+interface Task {
+  id: string;
+  name: string;
+}
 
-function App() {
-  const [tasks, setTasks] = useState([]);
-  const [task, setTask] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const socket: Socket = io('https://fullstack-task-sravani-backend-app.onrender.com');
+
+const App: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [task, setTask] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // axios.get('https://fullstack-sravani-backend.onrender.com/fetchAllTasks')
-    // axios.get('http://localhost:4000/fetchAllTasks')
-    axios.get('https://fullstack-task-sravani-backend-app.onrender.com/fetchAllTasks')
-      .then(response => {
+    axios.get<Task[]>('https://fullstack-task-sravani-backend-app.onrender.com/fetchAllTasks')
+      .then((response: AxiosResponse<Task[]>) => {
         setTasks(response.data);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error('Error fetching tasks:', error);
         setError('Error fetching tasks');
         setLoading(false);
       });
 
-    socket.on('taskList', (tasks) => {
-        console.log("tasks",tasks)
+    socket.on('taskList', (tasks: Task[]) => {
+      console.log("tasks", tasks);
       setTasks(tasks);
     });
 
-    socket.on('connect_error', (err) => {
+    socket.on('connect_error', (err: Error) => {
       console.error('WebSocket connection error:', err);
       setError('WebSocket connection error');
     });
@@ -48,13 +49,13 @@ function App() {
       setError('Task cannot be empty');
       return;
     }
-    const newTask = { id: new Date() , name: task };
-    socket.emit('addTask', newTask); 
+    const newTask: Task = { id: new Date().toISOString(), name: task };
+    socket.emit('addTask', newTask);
     setTask('');
     setError(null);
   };
 
-  const handleDeleteTask = (taskId) => {
+  const handleDeleteTask = (taskId: string) => {
     socket.emit('deleteTask', taskId);
   };
 
