@@ -84,6 +84,6 @@ To run the project locally, follow these steps:
 **MongoDB Atlas:** To store the data in global cloud-based database service designed for developing modern applications.
 
 **Deployment:** 
-   Backend :   vercel,
+   Backend :   render,
    Frontend :  vercel
 ---
