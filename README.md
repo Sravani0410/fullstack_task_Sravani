@@ -1,7 +1,7 @@
 # Todo-App App:
 
 ## Introduction
-Create a Todo App using WebSockets (Native or Socket.io) and HTTP, that creates a basic to-do list The application should use ReactJS, Redux, React Router, and Axios for frontend development, and
+Create a Todo App using WebSockets (Native or Socket.io) and HTTP, that creates a basic to-do list The application should use ReactJS,Typescript, and Axios for frontend development, and
 Node with Express Framework for backend API development. The data should be
 stored in MongoDB Server. The entire application should be containerized and
 deployable.
@@ -75,11 +75,11 @@ To run the project locally, follow these steps:
 
 ## Technology Stack
 
-**Frontend:** Typescript,React,Redux-toolkit
+**Frontend:** Typescript,React,web-socket
 
 **CSS:** Implement CSS 
 
-**Backend:** Node,Express,Redis
+**Backend:** Node,Express,Redis,Web-socket
 
 **MongoDB Atlas:** To store the data in global cloud-based database service designed for developing modern applications.
 
