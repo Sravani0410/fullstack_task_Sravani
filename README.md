@@ -33,7 +33,7 @@ Backend: [Live Demo](https://fullstack-task-sravani-backend-app.onrender.com/)
 Backend:
 1. Test the API's in Postman:
 
-**Auth API's**
+**Todo-list API's**
 
 | Methods | API URL                                                                    |
 |---------|----------------------------------------------------------------------------|
