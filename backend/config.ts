@@ -14,7 +14,7 @@ const mongooseOptions: any = {
 
 mongoose
   .connect(
-    "mongodb+srv://assignment_user:HCgEj5zv8Hxwa4xO@cluster0.pir4n5b.mongodb.net/assignment?retryWrites=true&w=majority&appName=Cluster0",
+    "mongodb+srv://assignment_user:HCgEj5zv8Hxwa4xO@cluster0.pir4n5b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     mongooseOptions
   )
   .then(() => console.log("MongoDB connected"))
